@@ -45,7 +45,7 @@ class ProductsFilters extends React.Component {
             searchPhrase: '',
             searchOnlyFood: false,
             searchCategory: ''
-        },() => {
+        }, () => {
             this.filterProducts();
         });
     }
@@ -57,6 +57,10 @@ class ProductsFilters extends React.Component {
         return uniqueCategoriesList
     }
 
+    componentDidMount(){
+        this.filterProducts();
+    }
+
     render() {
         const uniqueCategories = this.getUniqueCategories();
         const { searchPhrase, searchOnlyFood, searchCategory } = this.state;
@@ -65,17 +69,17 @@ class ProductsFilters extends React.Component {
                 <input value={searchPhrase} onChange={this.handleSearchPhraseChange}></input>
                 Tylko produkty spożywcze
                 <input type='checkbox' onChange={this.handleOnlyFood} value={searchOnlyFood} ></input>
-                 Kategoria
+                Kategoria
                 <select value={searchCategory} onChange={this.handleSelectCategory}>
                     <option key={'all'} value={''}>Kategoria</option>
-                    {uniqueCategories.map((kateogoria) =><option key={kateogoria} value={kateogoria}>{kateogoria}</option>)}
+                    {uniqueCategories.map((kateogoria) => <option key={kateogoria} value={kateogoria}>{kateogoria}</option>)}
                 </select>
                 {/* <button onClick={this.filterProducts}>Wyszukaj</button> */}
                 <button onClick={this.handleResetFilters}>Zresetuj filtry</button>
             </div>
-          );
+        );
     }
-  }
+}
 
 
 export default ProductsFilters;

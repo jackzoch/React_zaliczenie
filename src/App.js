@@ -7,12 +7,19 @@ import products from './common/consts/produkty'
 import { useState } from 'react';
 
 function App() {
+  let variableProductsList = products;
+  
+  function AppendProductsList (item){
+    variableProductsList.push(item)
+  }
+
+  const [basicList, setBasicList] = useState(products);
   const [resultsToDisplay, setResultsToDisplay] = useState(products);  
   console.log(resultsToDisplay);
   return (
     <div className={styles.appWrapper}>
-      <AddProducts />
-      <ProductsFilters products={products} sendFilteredProductsToParentComponent={setResultsToDisplay} />
+      <AddProducts productList = {basicList} productToAdd={(p)=>setBasicList([...basicList,p])} />
+      <ProductsFilters products={basicList} sendFilteredProductsToParentComponent={setResultsToDisplay} />
       <div className={styles.columnsWrapper}>
         <ProductsList productsToDispaly={resultsToDisplay}/>
         <ShopingList />

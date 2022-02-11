@@ -7,20 +7,28 @@ function AddProducts(props) {
 
     const [productName, setName] = useState('')
     const [productCategory, setCategory] = useState('')
+    const [isFood, setIsFood] = useState('')
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const message = `Cześć ${productName}, twój znak zodiaku to: ${productCategory}`;
-        props.sendMessageToParentComponent(message)
+        const produ ={
+                nazwa: productName,
+                kategoria: productCategory,
+                produktSpozywczy: isFood,
+        };
+       props.productToAdd(produ);
     }
 
     const handleChange = (event) => {
         if (event.target.name === 'name') {
             setName(event.target.value)
         }
-        if (event.target.name === 'Category') {
+        if (event.target.name === 'category') {
             setCategory(event.target.value)
         }
+        if (event.target.name === 'isFood') {
+            setIsFood(event.target.value)
+        }        
     }
 
     return (
@@ -31,16 +39,11 @@ function AddProducts(props) {
             </label>
             <label>
                 Kateogoria:
-                <input type="text" name="Category" value={productCategory} onChange={handleChange} />
+                <input type="text" name="category" value={productCategory} onChange={handleChange} />
             </label>
             <label>
                 Produkt spożywczy:
-                <input
-                    name="isGoing"
-                    type="checkbox"
-                // checked={this.state.isGoing}
-                // onChange={this.handleInputChange} 
-                />
+                <input type="checkbox" name="isGoing" value={isFood} onChange={handleChange} />
             </label>
             <input type="submit" value="Dodaj" />
         </form>
