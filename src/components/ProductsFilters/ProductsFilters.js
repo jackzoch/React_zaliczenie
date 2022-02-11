@@ -57,9 +57,11 @@ class ProductsFilters extends React.Component {
         return uniqueCategoriesList
     }
 
-    componentDidMount(){
-        this.filterProducts();
-    }
+    componentDidUpdate(prevProps) {
+        if (prevProps.products !== this.props.products) {
+          this.filterProducts();
+        }
+      }
 
     render() {
         const uniqueCategories = this.getUniqueCategories();

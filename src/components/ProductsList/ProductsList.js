@@ -4,6 +4,11 @@ import { useState } from 'react';
 
 
 
+// const AddProducts = (event) => {
+// console.log("itemssss " + event.target)
+// }
+
+
 function ProductsList(props) {
   const [productsList, setProductsList] = useState('') 
   
@@ -17,7 +22,7 @@ function ProductsList(props) {
         {/* <b>{props.productsToDispaly}</b>  */}
 
         <ui>
-          {props.productsToDispaly.map((product) => <li key={product.nazwa}>{`${product.nazwa}  ${product.kategoria} ${product.produktSpozywczy}`}</li>)}
+          {props.productsToDispaly.map((product) => <li key={product.nazwa} onClick={()=>props.AddProduct(product)}>{`${product.nazwa}  ${product.kategoria} ${product.produktSpozywczy}`}</li>)}
         </ui>
       </header>
     </div>

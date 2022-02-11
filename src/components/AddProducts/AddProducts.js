@@ -27,7 +27,8 @@ function AddProducts(props) {
             setCategory(event.target.value)
         }
         if (event.target.name === 'isFood') {
-            setIsFood(event.target.value)
+            console.log(event)
+            setIsFood(event.target.checked)
         }        
     }
 
@@ -43,7 +44,7 @@ function AddProducts(props) {
             </label>
             <label>
                 Produkt spożywczy:
-                <input type="checkbox" name="isGoing" value={isFood} onChange={handleChange} />
+                <input type="checkbox" name="isFood" value={isFood} onChange={handleChange} />
             </label>
             <input type="submit" value="Dodaj" />
         </form>
