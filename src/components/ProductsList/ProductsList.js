@@ -12,9 +12,7 @@ import { useState } from 'react';
 function ProductsList(props) {
   const [productsList, setProductsList] = useState('') 
   
-  console.log("Lista produktóww : ")
-  console.log(props.productsToDispaly)
-  return (
+   return (
     <div className={commonColumnsStyles.App}>
       <header className={commonColumnsStyles.AppHeader}>
 

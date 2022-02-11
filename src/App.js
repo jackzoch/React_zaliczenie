@@ -20,20 +20,34 @@ function App() {
   const [resultsToDisplay, setResultsToDisplay] = useState(products);
   const [shopingList, setShopingList] = useState([]);
 
-  var setShopingList2 = (product) => {
-    console.log("shop " + product);
-    setShopingList([...shopingList,product])
-    console.log("sssss " + shopingList)
+  var addProductToShoppingList = (product) => {
+    setShopingList([...shopingList, product])
   }
 
-  console.log(resultsToDisplay);
+  var removeProductFromShoppingList = (product) => {
+    console.log("shop " + product);
+    let tempArray = [...shopingList];
+    var filtered = tempArray.filter(function(el) { return el.nazwa != product.nazwa; }); 
+    console.log(tempArray)
+    console.log(filtered)
+    setShopingList(filtered);
+    // const index = tempArray.indexOf(product.nazwa)
+    // debugger
+    // if (index > -1) {
+    //   tempArray.splice(index, 1)
+    //   setShopingList([tempArray])
+    // }
+  }
+
+
+  // console.log(resultsToDisplay);
   return (
     <div className={styles.appWrapper}>
       <AddProducts productList={basicList} productToAdd={(p) => setBasicList([...basicList, p])} />
       <ProductsFilters products={basicList} sendFilteredProductsToParentComponent={setResultsToDisplay} />
       <div className={styles.columnsWrapper}>
-        <ProductsList AddProduct={setShopingList2} productsToDispaly={resultsToDisplay} />
-        <ShopingList uploadList={shopingList}/>
+        <ProductsList AddProduct={addProductToShoppingList} productsToDispaly={resultsToDisplay} />
+        <ShopingList uploadList={shopingList} removeProduct={removeProductFromShoppingList} />
       </div>
     </ div>
   );
