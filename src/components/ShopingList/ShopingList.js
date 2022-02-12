@@ -12,9 +12,7 @@ function ShopingList(props) {
     <div className={commonColumnsStyles.App}>
       <header className={commonColumnsStyles.AppHeader}>
         <p>Shoping List</p>
-        <ui>
-          {props.uploadList.map((product) => <li key={product.nazwa} onClick={()=>props.removeProduct(product)}>{`${product.nazwa}  ${product.kategoria} ${product.produktSpozywczy}`}</li>)}
-        </ui>
+          {props.uploadList.map((product) => <li key={product.TimeStamp} onClick={()=>props.removeProduct(product)}>{`${product.nazwa}  ${product.kategoria} ${product.produktSpozywczy}`}</li>)}
 
       </header>
     </div>

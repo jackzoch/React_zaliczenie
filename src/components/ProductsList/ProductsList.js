@@ -19,9 +19,7 @@ function ProductsList(props) {
         <p>Products list</p>
         {/* <b>{props.productsToDispaly}</b>  */}
 
-        <ui>
           {props.productsToDispaly.map((product) => <li key={product.nazwa} onClick={()=>props.AddProduct(product)}>{`${product.nazwa}  ${product.kategoria} ${product.produktSpozywczy}`}</li>)}
-        </ui>
       </header>
     </div>
   );
