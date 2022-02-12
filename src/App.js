@@ -41,11 +41,11 @@ function App() {
     var addProductToShoppingList = (product) => {
         let generatedUniqueID = guidGenerator();
         product.TimeStamp = generatedUniqueID;
-        // if (containsObject(product, [...shopingList])) {
-        //     return
-        // } else {
+        if (containsObject(product, [...shopingList])) {
+            return
+        } else {
             setShopingList([...shopingList, product]);
-        // }
+        }
     }
 
 
