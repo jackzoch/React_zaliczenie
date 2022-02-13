@@ -40,12 +40,15 @@ function App() {
 
     var addProductToShoppingList = (product) => {
         let generatedUniqueID = guidGenerator();
-        product.TimeStamp = generatedUniqueID;
-        if (containsObject(product, [...shopingList])) {
-            return
-        } else {
-            setShopingList([...shopingList, product]);
-        }
+        const addedProduct = {...product, TimeStamp: generatedUniqueID}
+        // if (containsObject(addedProduct, [...shopingList])) {
+        //     return
+        // } else {
+            // setShopingList([...shopingList, product]);
+            setShopingList((prevState)=>{
+                return [...prevState,addedProduct];
+            })
+        // }
     }
 
 
