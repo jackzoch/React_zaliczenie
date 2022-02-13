@@ -10,16 +10,18 @@ import { useState } from 'react';
 
 
 function ProductsList(props) {
-  const [productsList, setProductsList] = useState('') 
-  
-   return (
+  return (
     <div className={commonColumnsStyles.App}>
       <header className={commonColumnsStyles.AppHeader}>
 
         <p>Products list</p>
         {/* <b>{props.productsToDispaly}</b>  */}
 
-          {props.productsToDispaly.map((product) => <li key={product.nazwa} onClick={()=>props.AddProduct(product)}>{`${product.nazwa}  ${product.kategoria} ${product.produktSpozywczy}`}</li>)}
+        {props.productsToDispaly.map((product) =>
+          <li key={product.nazwa}
+            onClick={() => props.AddProduct(product)}>
+            {`${product.nazwa}`}
+          </li>)}
       </header>
     </div>
   );

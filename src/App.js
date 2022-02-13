@@ -22,10 +22,10 @@ function App() {
 
     var addProductToShoppingList = (product) => {
         let generatedUniqueID = guidGenerator();
-        const addedProduct = {...product, TimeStamp: generatedUniqueID}
-            setShopingList((prevState)=>{
-                return [...prevState,addedProduct];
-            })
+        const addedProduct = { ...product, TimeStamp: generatedUniqueID }
+        setShopingList((prevState) => {
+            return [...prevState, addedProduct];
+        })
     }
 
 
@@ -33,23 +33,14 @@ function App() {
         console.log("shop " + product);
         let tempArray = [...shopingList];
 
-        // const idToRemove = 5;
-        //const filtered = tempArray.filter((item) => item.TimeStamp !== product.TimeStamp);
-
         var filtered = tempArray.filter(function (el) { return el.TimeStamp !== product.TimeStamp; });
         console.log(tempArray)
         console.log(filtered)
         setShopingList(filtered);
-        // const index = tempArray.indexOf(product.nazwa)
-        // debugger
-        // if (index > -1) {
-        //   tempArray.splice(index, 1)
-        //   setShopingList([tempArray])
-        // }
+
     }
 
 
-    // console.log(resultsToDisplay);
     return (
         <div className={styles.appWrapper}>
             <AddProducts productList={basicList} productToAdd={(p) => setBasicList([...basicList, p])} />
