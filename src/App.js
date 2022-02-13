@@ -7,48 +7,25 @@ import products from './common/consts/produkty'
 import { useState } from 'react';
 
 function App() {
-    let variableProductsList = products;
-
-    function AppendProductsList(item) {
-        variableProductsList.push(item)
-    }
-
-    let isFinished = true
 
     const [basicList, setBasicList] = useState(products);
     const [resultsToDisplay, setResultsToDisplay] = useState(products);
     const [shopingList, setShopingList] = useState([]);
 
-    function containsObject(obj, list) {
-        var i;
-        for (i = 0; i < list.length; i++) {
-            if (list[i].TimeStamp === obj.TimeStamp) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
     function guidGenerator() {
-        // return Date.now()
-        var S4 = function () {
-            return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
-        };
-        return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
+        return Date.now()
+        // var S4 = function () {
+        //     return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+        // };
+        // return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
     }
 
     var addProductToShoppingList = (product) => {
         let generatedUniqueID = guidGenerator();
         const addedProduct = {...product, TimeStamp: generatedUniqueID}
-        // if (containsObject(addedProduct, [...shopingList])) {
-        //     return
-        // } else {
-            // setShopingList([...shopingList, product]);
             setShopingList((prevState)=>{
                 return [...prevState,addedProduct];
             })
-        // }
     }
 
 
@@ -59,7 +36,7 @@ function App() {
         // const idToRemove = 5;
         //const filtered = tempArray.filter((item) => item.TimeStamp !== product.TimeStamp);
 
-        var filtered = tempArray.filter(function (el) { return el.TimeStamp != product.TimeStamp; });
+        var filtered = tempArray.filter(function (el) { return el.TimeStamp !== product.TimeStamp; });
         console.log(tempArray)
         console.log(filtered)
         setShopingList(filtered);
