@@ -19,7 +19,7 @@ function ProductsList(props) {
 
         {props.productsToDispaly.map((product) =>
           <li key={product.nazwa}
-            onClick={() => props.AddProduct(product)}>
+            onClick={() => props.addProduct(product)}>
             {`${product.nazwa}`}
           </li>)}
       </header>

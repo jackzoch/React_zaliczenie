@@ -33,7 +33,7 @@ function App() {
         console.log("shop " + product);
         let tempArray = [...shopingList];
 
-        var filtered = tempArray.filter(function (el) { return el.TimeStamp !== product.TimeStamp; });
+        var filtered = tempArray.filter( (el) => el.TimeStamp !== product.TimeStamp);
         console.log(tempArray)
         console.log(filtered)
         setShopingList(filtered);
@@ -43,10 +43,10 @@ function App() {
 
     return (
         <div className={styles.appWrapper}>
-            <AddProducts productList={basicList} productToAdd={(p) => setBasicList([...basicList, p])} />
+            <AddProducts productToAdd={(p) => setBasicList([...basicList, p])} />
             <ProductsFilters products={basicList} sendFilteredProductsToParentComponent={setResultsToDisplay} />
             <div className={styles.columnsWrapper}>
-                <ProductsList AddProduct={addProductToShoppingList} productsToDispaly={resultsToDisplay} />
+                <ProductsList addProduct={addProductToShoppingList} productsToDispaly={resultsToDisplay} />
                 <ShopingList uploadList={shopingList} removeProduct={removeProductFromShoppingList} />
             </div>
         </ div>

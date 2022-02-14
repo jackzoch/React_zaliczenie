@@ -12,17 +12,20 @@ class ProductsFilters extends React.Component {
         }
     }
 
-    handleSearchPhraseChange = (event) => {
-        this.setState({ searchPhrase: event.target.value }, () => this.filterProducts());
+    
+    handleSearch = (event) => {
+        console.log(event);
+        this.setState({ [event.target.name]: event.target.name === "searchOnlyFood" ? event.target.checked : event.target.value }, () => this.filterProducts());
+        // this.setState({ [event.target.name]: event.target.name === "searchOnlyFood" ? event.target.checked : event.target.value }, () => this.filterProducts());
     }
 
-    handleOnlyFood = (event) => {
-        this.setState({ searchOnlyFood: event.target.checked }, () => this.filterProducts());
-    }
+    // handleOnlyFood = (event) => {
+    //     this.setState({ searchOnlyFood: event.target.checked }, () => this.filterProducts());
+    // }
 
-    handleSelectCategory = (event) => {
-        this.setState({ searchCategory: event.target.value }, () => this.filterProducts());
-    }
+    // handleSelectCategory = (event) => {
+    //     this.setState({ searchCategory: event.target.value }, () => this.filterProducts());
+    // }
 
     filterProducts = () => {
         const { products } = this.props;
@@ -68,13 +71,13 @@ class ProductsFilters extends React.Component {
         const { searchPhrase, searchOnlyFood, searchCategory } = this.state;
         return (
             <div className={styles.HeaderWrapper}>
-                <input value={searchPhrase} onChange={this.handleSearchPhraseChange}></input>
+                <input value={searchPhrase} onChange={this.handleSearch} name="searchPhrase"></input>
                 Tylko produkty spożywcze
-                <input type='checkbox' onChange={this.handleOnlyFood} value={searchOnlyFood} ></input>
+                <input type='checkbox' onChange={this.handleSearch} value={searchOnlyFood} name="searchOnlyFood" ></input>
                 Kategoria
-                <select value={searchCategory} onChange={this.handleSelectCategory}>
+                <select value={searchCategory} onChange={this.handleSearch} name="searchCategory" >
                     <option key={'all'} value={''}>Kategoria</option>
-                    {uniqueCategories.map((kateogoria) => <option key={kateogoria} value={kateogoria}>{kateogoria}</option>)}
+                    {uniqueCategories.map((kateogoria) => <option key={kateogoria} value={kateogoria}>{kateogoria} </option>)}
                 </select>
                 {/* <button onClick={this.filterProducts}>Wyszukaj</button> */}
                 <button onClick={this.handleResetFilters}>Zresetuj filtry</button>

@@ -16,29 +16,12 @@ function ShopingList(props) {
     console.log("index " + index);
 
     if (index !== -1) {
-      if (isBookmarked.length === 1) {
-        console.log("clear")
-        setIsBookmarked(() => {
-          return [];
-        })
-      } else {
-        let arr = isBookmarked;
-        arr.splice(index, 1); // 2nd parameter means remove one item only
-        console.log("new array " + arr)
-        setIsBookmarked(() => {
-          return [...arr];
-        })
-      }
+      setIsBookmarked(isBookmarked.filter((el)=>el != product.TimeStamp));
     } else {
       const addedProduct = [...isBookmarked, product.TimeStamp]
-      setIsBookmarked(() => {
-        return [...addedProduct];
-      })
+      setIsBookmarked([...addedProduct]);
     }
   }
-
-
-
 
   return (
     <div className={commonColumnsStyles.App}>
